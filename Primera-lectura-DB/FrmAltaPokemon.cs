@@ -147,6 +147,7 @@ namespace Primera_lectura_DB
                 cargarImagen(archivo.FileName);
                 //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
             }
+            //Confirmacion de actualizaciones GitHub
         }
      }
  }
