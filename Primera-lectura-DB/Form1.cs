@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using Negocio;
+using Utilidades;
 
 namespace Primera_lectura_DB
 {
@@ -158,7 +159,7 @@ namespace Primera_lectura_DB
                     return true;
                 }
 
-                if (!(soloNumeros(txtFiltroAvanzado.Text))) 
+                if (!(Validaciones.soloNumeros(txtFiltroAvanzado.Text))) 
                 {
                     MessageBox.Show("Debe ingresar solo números");
                     return true;
@@ -168,6 +169,7 @@ namespace Primera_lectura_DB
             return false;
         }
 
+        /*
         private bool soloNumeros(string cadena) 
         {
             foreach (char caracter in cadena)
@@ -177,7 +179,7 @@ namespace Primera_lectura_DB
             }
             return true;
         }
-
+        */
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
             PokemonDatos datos = new PokemonDatos();
@@ -231,6 +233,11 @@ namespace Primera_lectura_DB
                 cboCriterio.Items.Add("Contiene ");
 
             }
+        }
+
+        private void txtFiltroAvanzado_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -188,6 +188,7 @@
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(96, 20);
             this.txtFiltroAvanzado.TabIndex = 12;
+            this.txtFiltroAvanzado.TextChanged += new System.EventHandler(this.txtFiltroAvanzado_TextChanged);
             // 
             // frmPokemons
             // 

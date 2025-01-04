@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using Negocio;
+using Utilidades;
 
 namespace Primera_lectura_DB
 {
@@ -39,6 +40,31 @@ namespace Primera_lectura_DB
             Close();
         }
 
+        //valido campos del form de alta:
+        private bool validarCamposAlta()
+        {
+
+            if (string.IsNullOrEmpty(txtNumero.Text))
+            {
+                MessageBox.Show("El campo Número es obligatorio");
+                return true;
+            }
+            
+            if (!(Validaciones.soloNumeros(txtNumero.Text)))
+            {
+                MessageBox.Show("Debe ingresar solo números en el campo Número");
+                return true;
+            }
+            
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                MessageBox.Show("El campo Nombre es obligatorio");
+                return true;
+            }
+
+            return false;
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             //esta variable nuevoPokemon ya no es necesaria. Se reemplaza por el atributo
@@ -46,6 +72,9 @@ namespace Primera_lectura_DB
             PokemonDatos datos = new PokemonDatos();
             try
             {
+                if (validarCamposAlta())
+                    return;
+
                 if (pokemon == null)
                     pokemon = new Pokemon();
 
