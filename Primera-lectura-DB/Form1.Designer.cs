@@ -97,7 +97,7 @@
             this.btnEliminacionFisica.TabIndex = 5;
             this.btnEliminacionFisica.Text = "Eliminar Fisica";
             this.btnEliminacionFisica.UseVisualStyleBackColor = true;
-            this.btnEliminacionFisica.Click += new System.EventHandler(this.btnEliminacionFisica_Click);
+            this.btnEliminacionFisica.Click += new System.EventHandler(this.txtFiltroRapido_TextChanged);
             // 
             // btnEliminacionLogica
             // 

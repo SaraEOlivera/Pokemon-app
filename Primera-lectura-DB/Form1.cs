@@ -29,7 +29,7 @@ namespace Primera_lectura_DB
             cboCampo.Items.Add("Número");
             cboCampo.Items.Add("Nombre");
             cboCampo.Items.Add("Descripción");
-
+            habilitarBotones();
         }
 
         private void dgvPokemons_SelectionChanged(object sender, EventArgs e)
@@ -39,9 +39,8 @@ namespace Primera_lectura_DB
                 Pokemon seleccionado = (Pokemon)dgvPokemons.CurrentRow.DataBoundItem;
                 cargarImagen(seleccionado.UrlImagen);
             }
-
+            habilitarBotones();
         }
-
         private void cargar() 
         {
             PokemonDatos datos = new PokemonDatos();
@@ -104,11 +103,15 @@ namespace Primera_lectura_DB
         private void btnEliminacionFisica_Click(object sender, EventArgs e)
         {
             eliminar();
+            habilitarBotones();
+
         }
 
         private void btnEliminacionLogica_Click(object sender, EventArgs e)
         {
             eliminar(true);
+            habilitarBotones();
+
         }
 
         private void eliminar(bool logico = false) 
@@ -134,7 +137,6 @@ namespace Primera_lectura_DB
                 MessageBox.Show(ex.ToString());
             }
         }
-
 
         private bool validarFiltro()
         {
@@ -164,22 +166,13 @@ namespace Primera_lectura_DB
                     MessageBox.Show("Debe ingresar solo números");
                     return true;
                 }
+                //validarEstadoBtns();
             }
 
             return false;
         }
 
-        /*
-        private bool soloNumeros(string cadena) 
-        {
-            foreach (char caracter in cadena)
-            {
-                if (!(char.IsNumber(caracter)))
-                    return false;
-            }
-            return true;
-        }
-        */
+    
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
             PokemonDatos datos = new PokemonDatos();
@@ -197,6 +190,7 @@ namespace Primera_lectura_DB
             {
                 MessageBox.Show(ex.ToString());
             }
+            habilitarBotones();
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
@@ -239,5 +233,23 @@ namespace Primera_lectura_DB
         {
 
         }
+
+        private void habilitarBotones() 
+        {
+            if (dgvPokemons.Rows.Count == 0)
+            {
+                btnModificar.Enabled = false;
+                btnEliminacionLogica.Enabled = false;
+                btnEliminacionFisica.Enabled = false;
+            }
+            else 
+            {
+                btnModificar.Enabled = true;
+                btnEliminacionLogica.Enabled = true;
+                btnEliminacionFisica.Enabled = true;
+            }
+        }
+  
     }
+
 }
