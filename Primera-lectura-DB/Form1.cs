@@ -50,6 +50,7 @@ namespace Primera_lectura_DB
                 dgvPokemons.DataSource = listaPokemon;
                 ocultarColumnas();
                 cargarImagen(listaPokemon[0].UrlImagen);
+
             }
             catch (Exception ex)
             {
@@ -92,12 +93,19 @@ namespace Primera_lectura_DB
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (dgvPokemons.CurrentRow == null || dgvPokemons.CurrentRow.DataBoundItem == null)
+            {
+                MessageBox.Show("Seleccioná un Pókemon para modificar");
+                return;
+            }
             Pokemon seleccionado;
             seleccionado = (Pokemon)dgvPokemons.CurrentRow.DataBoundItem;
 
             FrmAltaPokemon modificar = new FrmAltaPokemon(seleccionado);
             modificar.ShowDialog();
             cargar();
+
+
         }
 
         private void btnEliminacionFisica_Click(object sender, EventArgs e)
@@ -236,6 +244,7 @@ namespace Primera_lectura_DB
 
         private void habilitarBotones() 
         {
+
             if (dgvPokemons.Rows.Count == 0)
             {
                 btnModificar.Enabled = false;
