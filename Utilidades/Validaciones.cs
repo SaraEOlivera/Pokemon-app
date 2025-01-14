@@ -17,5 +17,15 @@ namespace Utilidades
             }
             return true;
         }
+
+        public static bool soloLetras(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsLetter(caracter)))
+                    return false;
+            }
+            return true;
+        }
     }
 }

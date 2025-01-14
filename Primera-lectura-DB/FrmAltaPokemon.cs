@@ -62,6 +62,12 @@ namespace Primera_lectura_DB
                 return true;
             }
 
+            if (!(Validaciones.soloLetras(txtNumero.Text)))
+            {
+                MessageBox.Show("Debe ingresar solo letras en el campo Nombre");
+                return true;
+            }
+
             return false;
         }
 
