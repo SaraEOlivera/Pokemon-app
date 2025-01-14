@@ -30,6 +30,7 @@ namespace Primera_lectura_DB
             cboCampo.Items.Add("Nombre");
             cboCampo.Items.Add("Descripción");
             habilitarBotones();
+            btnVolver.Visible = false;
         }
 
         private void dgvPokemons_SelectionChanged(object sender, EventArgs e)
@@ -104,8 +105,6 @@ namespace Primera_lectura_DB
             FrmAltaPokemon modificar = new FrmAltaPokemon(seleccionado);
             modificar.ShowDialog();
             cargar();
-
-
         }
 
         private void btnEliminacionFisica_Click(object sender, EventArgs e)
@@ -193,6 +192,7 @@ namespace Primera_lectura_DB
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
                 dgvPokemons.DataSource = datos.filtrar(campo, criterio, filtro);
+                btnVolver.Visible = true;
             }
             catch (Exception ex)
             {
@@ -213,6 +213,7 @@ namespace Primera_lectura_DB
 
             dgvPokemons.DataSource = null;
             dgvPokemons.DataSource = listaFiltrada;
+            btnVolver.Visible = true;
 
             ocultarColumnas();
         }
@@ -258,7 +259,12 @@ namespace Primera_lectura_DB
                 btnEliminacionFisica.Enabled = true;
             }
         }
-  
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            cargar();
+            btnVolver.Visible = false;
+        }
     }
 
 }

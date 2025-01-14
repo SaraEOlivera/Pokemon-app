@@ -43,6 +43,7 @@
             this.lblCriterio = new System.Windows.Forms.Label();
             this.lblFiltroAvanzado = new System.Windows.Forms.Label();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
+            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +98,7 @@
             this.btnEliminacionFisica.TabIndex = 5;
             this.btnEliminacionFisica.Text = "Eliminar Fisica";
             this.btnEliminacionFisica.UseVisualStyleBackColor = true;
-            this.btnEliminacionFisica.Click += new System.EventHandler(this.txtFiltroRapido_TextChanged);
+            this.btnEliminacionFisica.Click += new System.EventHandler(this.btnEliminacionFisica_Click);
             // 
             // btnEliminacionLogica
             // 
@@ -190,11 +191,22 @@
             this.txtFiltroAvanzado.TabIndex = 12;
             this.txtFiltroAvanzado.TextChanged += new System.EventHandler(this.txtFiltroAvanzado_TextChanged);
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(596, 277);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.TabIndex = 13;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // frmPokemons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 326);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.lblFiltroAvanzado);
             this.Controls.Add(this.cboCriterio);
@@ -237,6 +249,7 @@
         private System.Windows.Forms.Label lblCriterio;
         private System.Windows.Forms.Label lblFiltroAvanzado;
         private System.Windows.Forms.TextBox txtFiltroAvanzado;
+        private System.Windows.Forms.Button btnVolver;
     }
 }
 
