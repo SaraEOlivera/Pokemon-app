@@ -64,6 +64,8 @@ namespace Primera_lectura_DB
         {
             dgvPokemons.Columns["UrlImagen"].Visible = false;
             dgvPokemons.Columns["Id"].Visible = false;
+            dgvPokemons.Columns["Numero"].Visible = false;
+            dgvPokemons.Columns["Descripcion"].Visible = false;
         }
 
         private void cargarImagen(string imagen) 
@@ -265,6 +267,8 @@ namespace Primera_lectura_DB
             cargar();
             btnVolver.Visible = false;
         }
+
+
     }
 
 }
