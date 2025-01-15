@@ -268,7 +268,16 @@ namespace Primera_lectura_DB
             btnVolver.Visible = false;
         }
 
+        private void dgvPokemons_CellDoubleClick(object sender, DataGridViewCellEventArgs evento)
+        {
+            if (evento.RowIndex >= 0) 
+            {
+                Pokemon fila = (Pokemon)dgvPokemons.CurrentRow.DataBoundItem;
+                frmDetalle vista = new frmDetalle(fila);
+                vista.ShowDialog();
 
+            }
+        }
     }
 
 }

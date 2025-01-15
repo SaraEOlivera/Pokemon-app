@@ -60,6 +60,7 @@
             this.dgvPokemons.Size = new System.Drawing.Size(354, 171);
             this.dgvPokemons.TabIndex = 10;
             this.dgvPokemons.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPokemons_CellContentClick);
+            this.dgvPokemons.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPokemons_CellDoubleClick);
             this.dgvPokemons.SelectionChanged += new System.EventHandler(this.dgvPokemons_SelectionChanged);
             // 
             // pbxPokemon
