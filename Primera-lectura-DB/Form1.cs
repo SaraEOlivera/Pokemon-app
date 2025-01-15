@@ -31,6 +31,7 @@ namespace Primera_lectura_DB
             cboCampo.Items.Add("Descripción");
             habilitarBotones();
             btnVolver.Visible = false;
+            configurarAnchoColumna();
         }
 
         private void dgvPokemons_SelectionChanged(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace Primera_lectura_DB
         {
             dgvPokemons.Columns["UrlImagen"].Visible = false;
             dgvPokemons.Columns["Id"].Visible = false;
-            dgvPokemons.Columns["Numero"].Visible = false;
+            //dgvPokemons.Columns["Numero"].Visible = false;
             dgvPokemons.Columns["Descripcion"].Visible = false;
         }
 
@@ -278,6 +279,16 @@ namespace Primera_lectura_DB
 
             }
         }
+
+        private void configurarAnchoColumna() 
+        {
+            dgvPokemons.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dgvPokemons.Columns[1].Width =  50;
+            dgvPokemons.Columns[3].Width = 350;
+
+        }
+
+
     }
 
 }
