@@ -20,9 +20,13 @@ namespace Utilidades
 
         public static bool soloLetras(string cadena)
         {
+            if (string.IsNullOrWhiteSpace(cadena)) 
+            {
+                return false;
+            }
             foreach (char caracter in cadena)
             {
-                if (!(char.IsLetter(caracter)))
+                if (!(char.IsLetter(caracter) || char.IsWhiteSpace(caracter)))
                     return false;
             }
             return true;

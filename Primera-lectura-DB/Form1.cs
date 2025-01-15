@@ -284,7 +284,6 @@ namespace Primera_lectura_DB
         {
             dgvPokemons.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvPokemons.Columns[1].Width =  50;
-            dgvPokemons.Columns[3].Width = 350;
 
         }
 
