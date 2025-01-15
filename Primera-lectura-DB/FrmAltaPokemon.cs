@@ -76,6 +76,7 @@ namespace Primera_lectura_DB
             //esta variable nuevoPokemon ya no es necesaria. Se reemplaza por el atributo
             //Pokemon nuevoPokemon = new Pokemon();
             PokemonDatos datos = new PokemonDatos();
+            string imagenUrl = txtUrlImagen.Text;
             try
             {
                 if (validarCamposAlta())
@@ -90,7 +91,8 @@ namespace Primera_lectura_DB
                 pokemon.Descripcion = txtDescripcion.Text;
 
                 //si el campo está vacio asigna placeholder
-                if (string.IsNullOrWhiteSpace(txtUrlImagen.Text))
+
+                if (string.IsNullOrWhiteSpace(imagenUrl) || !(validarUrl(imagenUrl) ||  validarRutaLocal(imagenUrl)))
                     pokemon.UrlImagen = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
                 else
                     pokemon.UrlImagen = txtUrlImagen.Text;
@@ -122,6 +124,17 @@ namespace Primera_lectura_DB
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private bool validarRutaLocal(string rutaLocal)
+        {
+            return File.Exists(rutaLocal);
+        }
+
+        private bool validarUrl(string imagenUrl)
+        {
+            return Uri.TryCreate(imagenUrl, UriKind.Absolute, out Uri uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
 
         private void FrmAltaPokemon_Load(object sender, EventArgs e)
