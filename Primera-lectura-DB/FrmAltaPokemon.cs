@@ -90,7 +90,7 @@ namespace Primera_lectura_DB
                 pokemon.Nombre = txtNombre.Text;
                 pokemon.Descripcion = txtDescripcion.Text;
 
-                //si el campo está vacio asigna placeholder
+                //si el campo está vacio, si la url  o ruta local no es valida , asigna placeholder
 
                 if (string.IsNullOrWhiteSpace(imagenUrl) || !(validarUrl(imagenUrl) ||  validarRutaLocal(imagenUrl)))
                     pokemon.UrlImagen = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
