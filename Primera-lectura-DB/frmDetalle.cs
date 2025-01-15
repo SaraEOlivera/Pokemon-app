@@ -35,6 +35,7 @@ namespace Primera_lectura_DB
             txtTipoDetalle.Text = seleccionado.Tipo.Descripcion;
             txtDebilidadDetalle.Text = seleccionado.Debilidad.Descripcion;
 
+
             if (!(string.IsNullOrEmpty(seleccionado.UrlImagen))) 
             {
                 try

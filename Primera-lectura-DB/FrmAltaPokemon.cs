@@ -88,7 +88,13 @@ namespace Primera_lectura_DB
                 pokemon.Numero = int.Parse(txtNumero.Text);
                 pokemon.Nombre = txtNombre.Text;
                 pokemon.Descripcion = txtDescripcion.Text;
-                pokemon.UrlImagen=txtUrlImagen.Text;
+
+                //si el campo está vacio asigna placeholder
+                if (string.IsNullOrWhiteSpace(txtUrlImagen.Text))
+                    pokemon.UrlImagen = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
+                else
+                    pokemon.UrlImagen = txtUrlImagen.Text;
+
                 //capturar valores de los desplegables:
                 pokemon.Tipo = (Elementos)cboTipo.SelectedItem;
                 pokemon.Debilidad = (Elementos)cboDebilidad.SelectedItem;
