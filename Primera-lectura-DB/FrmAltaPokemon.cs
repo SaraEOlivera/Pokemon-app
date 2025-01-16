@@ -76,10 +76,16 @@ namespace Primera_lectura_DB
             //esta variable nuevoPokemon ya no es necesaria. Se reemplaza por el atributo
             //Pokemon nuevoPokemon = new Pokemon();
             PokemonDatos datos = new PokemonDatos();
+            string nombre = txtNombre.Text;
             string imagenUrl = txtUrlImagen.Text;
+            int numero = int.Parse(txtNumero.Text);
+
             try
             {
                 if (validarCamposAlta())
+                    return;
+
+                if (!(validarRepetidos(numero, nombre, imagenUrl)))
                     return;
 
                 if (pokemon == null)
@@ -91,7 +97,6 @@ namespace Primera_lectura_DB
                 pokemon.Descripcion = txtDescripcion.Text;
 
                 //si el campo está vacio, si la url  o ruta local no es valida , asigna placeholder
-
                 if (string.IsNullOrWhiteSpace(imagenUrl) || !(validarUrl(imagenUrl) ||  validarRutaLocal(imagenUrl)))
                     pokemon.UrlImagen = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
                 else
@@ -203,6 +208,35 @@ namespace Primera_lectura_DB
             }
             //Confirmacion de actualizaciones GitHub
         }
+
+        private bool validarRepetidos(int numero, string nombre, string imgUrl ) 
+        {
+            PokemonDatos datos = new PokemonDatos();
+            List<Pokemon> listaPkms = datos.listar();
+            string imgPlaceholder = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
+
+            foreach (Pokemon pkm in listaPkms)
+            {
+                if (pkm.Numero == numero) 
+                {
+                    MessageBox.Show("El número de este Pókemon ya está registrado", "Alta Pokemon", MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    return false;
+                }
+                if (pkm.Nombre == nombre)
+                {
+                    MessageBox.Show("El nombre de este Pókemon ya está registrado", "Alta Pokemon", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return false;
+                }
+                if (!(string.IsNullOrEmpty(imgUrl)) && !(imgUrl.Trim().Equals(imgPlaceholder.Trim())) && pokemon.UrlImagen == imgUrl)
+                {
+                    MessageBox.Show("La imágen ya está registrada", "Alta Pokemon", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
 
 
      }
