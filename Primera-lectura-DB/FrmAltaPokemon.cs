@@ -82,11 +82,17 @@ namespace Primera_lectura_DB
 
             try
             {
+                int idPokemon = 0;
+
                 if (validarCamposAlta())
                     return;
 
+                // si el pkm ya existe se le asigna el id 
+                if (pokemon != null)
+                    idPokemon = pokemon.Id;
+
                 numero = int.Parse(txtNumero.Text);
-                if (!(validarRepetidos(numero, nombre, imagenUrl)))
+                if (!(validarRepetidos(numero, nombre, imagenUrl, idPokemon)))
                     return;
 
                 if (pokemon == null)
@@ -98,14 +104,7 @@ namespace Primera_lectura_DB
                 else
                      pokemon.UrlImagen = txtUrlImagen.Text;
 
-
-
-
-
-
-
-
-                if (!(validarRepetidos(numero, nombre, imagenUrl)))
+                if (!(validarRepetidos(numero, nombre, imagenUrl, idPokemon)))
                     return;
 
                 //carga del objeto
@@ -221,7 +220,7 @@ namespace Primera_lectura_DB
             //Confirmacion de actualizaciones GitHub
         }
 
-        private bool validarRepetidos(int numero, string nombre, string imgUrl ) 
+        private bool validarRepetidos(int numero, string nombre, string imgUrl, int idActual ) 
         {
             PokemonDatos datos = new PokemonDatos();
             List<Pokemon> listaPkms = datos.listar();
@@ -229,6 +228,9 @@ namespace Primera_lectura_DB
 
             foreach (Pokemon pkm in listaPkms)
             {
+                if (pokemon.Id == idActual)
+                    continue;
+
                 if (pokemon != null && !(string.IsNullOrEmpty(imgUrl)) && !(imgUrl.Trim().Equals(imgPlaceholder.Trim())) && pokemon.UrlImagen == imgUrl)
                 {
                     MessageBox.Show("La imágen ya está registrada", "Alta Pokemon", MessageBoxButtons.OK, MessageBoxIcon.Stop);
