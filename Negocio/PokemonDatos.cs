@@ -70,13 +70,21 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert into POKEMONS(Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, urlImagen)Values(@Numero, @Nombre, @Descripcion, 1, @IdTipo, @IdDebilidad, @urlImagen)");
+                datos.setearConsulta("Insert into POKEMONS(Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)Values(@Numero, @Nombre, @Descripcion, 1, @IdTipo, @IdDebilidad, @urlImagen)");
                 datos.setearParametro("@Numero", nuevo.Numero);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
                 datos.setearParametro("@IdTipo", nuevo.Tipo.Id);
                 datos.setearParametro("@IdDebilidad", nuevo.Debilidad.Id);
-                datos.setearParametro("@urlImagen", nuevo.UrlImagen);
+                if (!string.IsNullOrEmpty(nuevo.UrlImagen))
+                {
+                    datos.setearParametro("@urlImagen", valor: nuevo.UrlImagen);
+                }
+                else
+                {
+                    datos.setearParametro("@urlImagen", valor: DBNull.Value);
+                }
+
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

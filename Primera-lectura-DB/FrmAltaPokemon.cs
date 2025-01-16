@@ -71,36 +71,48 @@ namespace Primera_lectura_DB
             return false;
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)   
         {
             //esta variable nuevoPokemon ya no es necesaria. Se reemplaza por el atributo
             //Pokemon nuevoPokemon = new Pokemon();
             PokemonDatos datos = new PokemonDatos();
             string nombre = txtNombre.Text;
-            string imagenUrl = txtUrlImagen.Text;
-            int numero = int.Parse(txtNumero.Text);
+                string imagenUrl = txtUrlImagen.Text;
+            int numero;
 
             try
             {
                 if (validarCamposAlta())
                     return;
 
+                numero = int.Parse(txtNumero.Text);
                 if (!(validarRepetidos(numero, nombre, imagenUrl)))
                     return;
 
                 if (pokemon == null)
                     pokemon = new Pokemon();
 
+                //si el campo está vacio, si la url  o ruta local no es valida , asigna placeholder
+                if (string.IsNullOrWhiteSpace(imagenUrl) || !(validarUrl(imagenUrl) || validarRutaLocal(imagenUrl)))
+                    pokemon.UrlImagen = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
+                else
+                     pokemon.UrlImagen = txtUrlImagen.Text;
+
+
+
+
+
+
+
+
+                if (!(validarRepetidos(numero, nombre, imagenUrl)))
+                    return;
+
                 //carga del objeto
                 pokemon.Numero = int.Parse(txtNumero.Text);
                 pokemon.Nombre = txtNombre.Text;
                 pokemon.Descripcion = txtDescripcion.Text;
 
-                //si el campo está vacio, si la url  o ruta local no es valida , asigna placeholder
-                if (string.IsNullOrWhiteSpace(imagenUrl) || !(validarUrl(imagenUrl) ||  validarRutaLocal(imagenUrl)))
-                    pokemon.UrlImagen = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
-                else
-                    pokemon.UrlImagen = txtUrlImagen.Text;
 
                 //capturar valores de los desplegables:
                 pokemon.Tipo = (Elementos)cboTipo.SelectedItem;
@@ -217,6 +229,12 @@ namespace Primera_lectura_DB
 
             foreach (Pokemon pkm in listaPkms)
             {
+                if (pokemon != null && !(string.IsNullOrEmpty(imgUrl)) && !(imgUrl.Trim().Equals(imgPlaceholder.Trim())) && pokemon.UrlImagen == imgUrl)
+                {
+                    MessageBox.Show("La imágen ya está registrada", "Alta Pokemon", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return false;
+                }
+
                 if (pkm.Numero == numero) 
                 {
                     MessageBox.Show("El número de este Pókemon ya está registrado", "Alta Pokemon", MessageBoxButtons.OK,MessageBoxIcon.Stop);
@@ -227,11 +245,7 @@ namespace Primera_lectura_DB
                     MessageBox.Show("El nombre de este Pókemon ya está registrado", "Alta Pokemon", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return false;
                 }
-                if (!(string.IsNullOrEmpty(imgUrl)) && !(imgUrl.Trim().Equals(imgPlaceholder.Trim())) && pokemon.UrlImagen == imgUrl)
-                {
-                    MessageBox.Show("La imágen ya está registrada", "Alta Pokemon", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    return false;
-                }
+
 
             }
             return true;
