@@ -77,8 +77,9 @@ namespace Primera_lectura_DB
             //Pokemon nuevoPokemon = new Pokemon();
             PokemonDatos datos = new PokemonDatos();
             string nombre = txtNombre.Text;
-                string imagenUrl = txtUrlImagen.Text;
+            string imagenUrl = txtUrlImagen.Text;
             int numero;
+            int numeroPokemon;
 
             try
             {
@@ -93,6 +94,9 @@ namespace Primera_lectura_DB
 
                 numero = int.Parse(txtNumero.Text);
                 if (!(validarRepetidos(numero, nombre, imagenUrl, idPokemon)))
+                    return;
+
+                if (!int.TryParse(txtNumero.Text, out numeroPokemon) || !validarNumeroPokemon(numeroPokemon))
                     return;
 
                 if (pokemon == null)
@@ -247,8 +251,19 @@ namespace Primera_lectura_DB
                     MessageBox.Show("El nombre de este Pókemon ya está registrado", "Alta Pokemon", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return false;
                 }
+            }
+            return true;
+        }
 
+        private bool validarNumeroPokemon(int numeroPokemon) 
+        {
+            int numeroMinimo = int.Parse(ConfigurationManager.AppSettings["NumeroMinimoPokemon"]);
+            int numeroMaximo = int.Parse(ConfigurationManager.AppSettings["NumeroMaximoPokemon"]);
 
+            if (numeroPokemon < numeroMinimo || numeroPokemon > numeroMaximo) 
+            {
+                MessageBox.Show($"El número del Pókemon debe ser entre {numeroMinimo} y {numeroMaximo}", "Número no válido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
             }
             return true;
         }
