@@ -228,7 +228,7 @@ namespace Primera_lectura_DB
 
             foreach (Pokemon pkm in listaPkms)
             {
-                if (pokemon.Id == idActual)
+                if (pokemon != null &&  pokemon.Id == idActual)
                     continue;
 
                 if (pokemon != null && !(string.IsNullOrEmpty(imgUrl)) && !(imgUrl.Trim().Equals(imgPlaceholder.Trim())) && pokemon.UrlImagen == imgUrl)

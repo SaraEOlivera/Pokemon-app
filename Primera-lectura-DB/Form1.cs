@@ -203,12 +203,12 @@ namespace Primera_lectura_DB
             }
             habilitarBotones();
             txtFiltroAvanzado.Text = string.Empty;
-
+            
             if (cboCampo != null &&  cboCampo.Items.Count > 0)
                 cboCampo.SelectedIndex = -1;
 
             if (cboCriterio != null && cboCriterio.Items.Count > 0)
-                cboCriterio.SelectedIndex = -1;
+                cboCriterio.SelectedIndex = -1; 
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
