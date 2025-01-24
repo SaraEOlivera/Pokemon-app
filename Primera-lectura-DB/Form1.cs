@@ -17,6 +17,9 @@ namespace Primera_lectura_DB
     {
         //prop privada
         private List<Pokemon> listaPokemon;
+        private int paginaActual = 1;
+        private int pokemonsPorPagina = 5;
+
 
         public frmPokemons()
         {
@@ -49,9 +52,14 @@ namespace Primera_lectura_DB
             try
             {
                 listaPokemon = datos.listar();
-                dgvPokemons.DataSource = listaPokemon;
+                cargarGrillaConPaginas();
+
+                //mostrar img 1er pkm de la lista
+                if(listaPokemon.Count > 0)
+                    cargarImagen(listaPokemon[0].UrlImagen);
+
+                //dgvPokemons.DataSource = listaPokemon; borrar para q se muestra x paginas 
                 ocultarColumnas();
-                cargarImagen(listaPokemon[0].UrlImagen);
 
             }
             catch (Exception ex)
@@ -59,6 +67,32 @@ namespace Primera_lectura_DB
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void cargarGrillaConPaginas()
+        {
+            if (listaPokemon == null || listaPokemon.Count == 0)
+                return;
+
+            //obtener primer  indice del pkm en la pag
+            int inicio = (paginaActual - 1) * pokemonsPorPagina;
+            //obtener ultimo  indice del pkm en la pag
+            int fin = Math.Min(inicio + pokemonsPorPagina, listaPokemon.Count);
+
+            //lista con pkm de la pagina actual
+            List<Pokemon> listaConPaginas = listaPokemon.GetRange(inicio, fin - inicio);
+
+            //limpiar el datasource
+            dgvPokemons.DataSource = null;
+            dgvPokemons.DataSource = listaConPaginas;
+
+            //actualizar txt del label
+            lblPagina.Text = $"Página {paginaActual} de {Math.Ceiling(listaPokemon.Count / (double)pokemonsPorPagina)}";
+
+            //habilitar o no los botones
+            btnAnterior.Enabled = paginaActual > 1;
+            btnSiguiente.Enabled = fin < listaPokemon.Count;
+            ocultarColumnas();
         }
 
         private void ocultarColumnas() 
@@ -182,7 +216,6 @@ namespace Primera_lectura_DB
             return false;
         }
 
-    
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
             PokemonDatos datos = new PokemonDatos();
@@ -299,10 +332,27 @@ namespace Primera_lectura_DB
         {
             dgvPokemons.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvPokemons.Columns[1].Width =  50;
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual > 1) 
+            {
+                paginaActual--;
+                cargarGrillaConPaginas();
+            }
 
         }
 
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual * pokemonsPorPagina < listaPokemon.Count)
+            {
+                paginaActual++;
+                cargarGrillaConPaginas();
 
+            }
+        }
     }
 
 }

@@ -44,6 +44,9 @@
             this.lblFiltroAvanzado = new System.Windows.Forms.Label();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.lblPagina = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +57,7 @@
             this.dgvPokemons.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvPokemons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPokemons.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvPokemons.Location = new System.Drawing.Point(40, 54);
+            this.dgvPokemons.Location = new System.Drawing.Point(28, 39);
             this.dgvPokemons.MultiSelect = false;
             this.dgvPokemons.Name = "dgvPokemons";
             this.dgvPokemons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -66,7 +69,7 @@
             // 
             // pbxPokemon
             // 
-            this.pbxPokemon.Location = new System.Drawing.Point(453, 54);
+            this.pbxPokemon.Location = new System.Drawing.Point(441, 39);
             this.pbxPokemon.Name = "pbxPokemon";
             this.pbxPokemon.Size = new System.Drawing.Size(174, 171);
             this.pbxPokemon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -75,7 +78,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(40, 239);
+            this.btnAgregar.Location = new System.Drawing.Point(30, 252);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(148, 27);
             this.btnAgregar.TabIndex = 1;
@@ -85,7 +88,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(194, 240);
+            this.btnModificar.Location = new System.Drawing.Point(184, 253);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(131, 26);
             this.btnModificar.TabIndex = 2;
@@ -95,7 +98,7 @@
             // 
             // btnEliminacionFisica
             // 
-            this.btnEliminacionFisica.Location = new System.Drawing.Point(331, 240);
+            this.btnEliminacionFisica.Location = new System.Drawing.Point(321, 253);
             this.btnEliminacionFisica.Name = "btnEliminacionFisica";
             this.btnEliminacionFisica.Size = new System.Drawing.Size(108, 27);
             this.btnEliminacionFisica.TabIndex = 3;
@@ -105,7 +108,7 @@
             // 
             // btnEliminacionLogica
             // 
-            this.btnEliminacionLogica.Location = new System.Drawing.Point(445, 239);
+            this.btnEliminacionLogica.Location = new System.Drawing.Point(435, 252);
             this.btnEliminacionLogica.Name = "btnEliminacionLogica";
             this.btnEliminacionLogica.Size = new System.Drawing.Size(98, 27);
             this.btnEliminacionLogica.TabIndex = 4;
@@ -116,7 +119,7 @@
             // lblFiltro
             // 
             this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(37, 23);
+            this.lblFiltro.Location = new System.Drawing.Point(30, 15);
             this.lblFiltro.Name = "lblFiltro";
             this.lblFiltro.Size = new System.Drawing.Size(66, 13);
             this.lblFiltro.TabIndex = 6;
@@ -124,7 +127,7 @@
             // 
             // txtFiltroRapido
             // 
-            this.txtFiltroRapido.Location = new System.Drawing.Point(128, 20);
+            this.txtFiltroRapido.Location = new System.Drawing.Point(121, 12);
             this.txtFiltroRapido.Name = "txtFiltroRapido";
             this.txtFiltroRapido.Size = new System.Drawing.Size(121, 20);
             this.txtFiltroRapido.TabIndex = 0;
@@ -132,7 +135,7 @@
             // 
             // btnFiltroavanzado
             // 
-            this.btnFiltroavanzado.Location = new System.Drawing.Point(471, 270);
+            this.btnFiltroavanzado.Location = new System.Drawing.Point(471, 281);
             this.btnFiltroavanzado.Name = "btnFiltroavanzado";
             this.btnFiltroavanzado.Size = new System.Drawing.Size(75, 23);
             this.btnFiltroavanzado.TabIndex = 8;
@@ -143,7 +146,7 @@
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(0, 275);
+            this.lblCampo.Location = new System.Drawing.Point(0, 286);
             this.lblCampo.Name = "lblCampo";
             this.lblCampo.Size = new System.Drawing.Size(43, 13);
             this.lblCampo.TabIndex = 7;
@@ -153,7 +156,7 @@
             // 
             this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(40, 272);
+            this.cboCampo.Location = new System.Drawing.Point(40, 283);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(79, 21);
             this.cboCampo.TabIndex = 5;
@@ -163,7 +166,7 @@
             // 
             this.cboCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCriterio.FormattingEnabled = true;
-            this.cboCriterio.Location = new System.Drawing.Point(173, 274);
+            this.cboCriterio.Location = new System.Drawing.Point(173, 285);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(95, 21);
             this.cboCriterio.TabIndex = 6;
@@ -171,7 +174,7 @@
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(125, 275);
+            this.lblCriterio.Location = new System.Drawing.Point(125, 286);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(42, 13);
             this.lblCriterio.TabIndex = 9;
@@ -180,7 +183,7 @@
             // lblFiltroAvanzado
             // 
             this.lblFiltroAvanzado.AutoSize = true;
-            this.lblFiltroAvanzado.Location = new System.Drawing.Point(274, 278);
+            this.lblFiltroAvanzado.Location = new System.Drawing.Point(274, 289);
             this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
             this.lblFiltroAvanzado.Size = new System.Drawing.Size(83, 13);
             this.lblFiltroAvanzado.TabIndex = 11;
@@ -188,7 +191,7 @@
             // 
             // txtFiltroAvanzado
             // 
-            this.txtFiltroAvanzado.Location = new System.Drawing.Point(363, 275);
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(363, 286);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(96, 20);
             this.txtFiltroAvanzado.TabIndex = 7;
@@ -196,7 +199,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(552, 272);
+            this.btnVolver.Location = new System.Drawing.Point(552, 283);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 9;
@@ -204,11 +207,45 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnterior.Location = new System.Drawing.Point(28, 217);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 12;
+            this.btnAnterior.Text = "A&nterior";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSiguiente.Location = new System.Drawing.Point(352, 217);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnSiguiente.TabIndex = 13;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // lblPagina
+            // 
+            this.lblPagina.AutoSize = true;
+            this.lblPagina.Location = new System.Drawing.Point(202, 222);
+            this.lblPagina.Name = "lblPagina";
+            this.lblPagina.Size = new System.Drawing.Size(40, 13);
+            this.lblPagina.TabIndex = 14;
+            this.lblPagina.Text = "Página";
+            // 
             // frmPokemons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 311);
+            this.Controls.Add(this.lblPagina);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.lblFiltroAvanzado);
@@ -259,6 +296,9 @@
         private System.Windows.Forms.Label lblFiltroAvanzado;
         private System.Windows.Forms.TextBox txtFiltroAvanzado;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Label lblPagina;
     }
 }
 
