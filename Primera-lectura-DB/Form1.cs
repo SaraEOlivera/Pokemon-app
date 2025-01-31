@@ -302,12 +302,16 @@ namespace Primera_lectura_DB
                 btnModificar.Enabled = false;
                 btnEliminacionLogica.Enabled = false;
                 btnEliminacionFisica.Enabled = false;
+                btnAnterior.Enabled = false;
+                btnSiguiente.Enabled = false;
             }
             else 
             {
                 btnModificar.Enabled = true;
                 btnEliminacionLogica.Enabled = true;
                 btnEliminacionFisica.Enabled = true;
+                btnAnterior.Enabled = true;
+                btnSiguiente.Enabled = true;
             }
         }
 
