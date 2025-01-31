@@ -313,6 +313,7 @@ namespace Primera_lectura_DB
                 btnAnterior.Enabled = true;
                 btnSiguiente.Enabled = true;
             }
+            btnAnterior.Enabled = paginaActual > 1;
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -320,6 +321,7 @@ namespace Primera_lectura_DB
             //cargar();
             paginaActual = 1;
             cargarGrillaConPaginas();
+            habilitarBotones();
             btnVolver.Visible = false;
         }
 
