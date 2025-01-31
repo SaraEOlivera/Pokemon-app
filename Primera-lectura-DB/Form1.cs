@@ -317,7 +317,9 @@ namespace Primera_lectura_DB
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            cargar();
+            //cargar();
+            paginaActual = 1;
+            cargarGrillaConPaginas();
             btnVolver.Visible = false;
         }
 
